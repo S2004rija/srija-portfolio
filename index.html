@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Resume | Srija Das</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-oBxqHF+WZT+eTZ9UeRkUOc2rZZYu+2KYxz1VgFJ1oG3+qvF+K8b3tw5t3p8ptShPPZq6Ob6uXU8vD6MoMw9PGA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <style>
+        :root {
+            --primary-color: #004d40;
+            --bg-color: #f0f4f8;
+            --text-color: #333;
+            --dark-bg: #121212;
+            --dark-text: #eaeaea;
+            --dark-primary: #26a69a;
+        }
+
+        * {
+            scroll-margin-top: 100px;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--bg-color);
+            color: var(--text-color);
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 120px auto 40px auto;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-pic {
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--primary-color);
+            margin-bottom: 15px;
+            animation: borderPulse 3s infinite ease-in-out;
+        }
+
+        @keyframes borderPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0px var(--primary-color);
+            }
+
+            50% {
+                box-shadow: 0 0 20px var(--primary-color);
+            }
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin: 10px 0 5px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-left: 5px solid var(--primary-color);
+            padding-left: 10px;
+            margin-top: 40px;
+            font-weight: 500;
+        }
+
+        section {
+            margin-bottom: 25px;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            text-shadow: 0 0 8px rgba(0, 77, 64, 0.5);
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        #scrollProgress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--primary-color);
+            z-index: 1002;
+            width: 0%;
+        }
+
+        .dark-mode {
+            background: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        .dark-mode .container {
+            background: rgba(30, 30, 30, 0.8);
+        }
+
+        .dark-mode h1,
+        .dark-mode h2,
+        .dark-mode a {
+            color: var(--dark-primary);
+        }
+
+        .dark-mode nav a {
+            color: var(--dark-primary);
+        }
+
+        .toggle-btn {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            padding: 12px;
+            border-radius: 50%;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            z-index: 1001;
+            box-shadow: 0 5px 15px rgba(0, 77, 64, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            transform: scale(1.1);
+        }
+
+        .back-to-top.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (max-width: 600px) {
+
+            section p,
+            section li {
+                font-size: 0.95em;
+            }
+
+            .typing-animation {
+                font-size: 0.95em;
+            }
+
+            .container {
+                width: 95%;
+                padding: 15px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            .typing-animation {
+                font-size: 0.9em;
+                text-align: center;
+            }
+
+            .profile-pic {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        /* 🔁 Animated Gradient Background */
+        body {
+            background: linear-gradient(-45deg, #e0f7fa, #f1f8e9, #fce4ec, #ede7f6);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Speed up from 15s to 8s */
+        body {
+            animation: gradientBG 8s ease infinite;
+        }
+
+
+        /* ✨ Typing Animation Blinking Cursor */
+        .typing-animation::after {
+            content: '|';
+            animation: blink 0.5s steps(1) infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+
+        /* 🌀 Project Card Hover Effect */
+        #projects ul li {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #projects ul li:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 77, 64, 0.2);
+        }
+
+        /* 🧠 Section Glassmorphism Enhancement */
+        section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            backdrop-filter: blur(8px);
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        #particles-js {
+            position: fixed;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            top: 0;
+            left: 0;
+        }
+
+        .floating-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 77, 64, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .floating-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .dark-mode .floating-card {
+            background: rgba(30, 30, 30, 0.5);
+        }
+
+        #contact a {
+            transition: transform 0.3s ease, color 0.3s ease;
+            display: inline-block;
+        }
+
+        #contact a:hover {
+            transform: scale(1.05) translateY(-2px);
+            color: #00796b;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .bounce {
+            animation: bounceIn 1s ease-out;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 🌌 Particle Background (Optional for visual appeal) -->
+    <div id="particles-js"></div>
+
+    <!-- Body content here -->
+    <nav>
+        <ul>
+            <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
+            <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
+            <li><a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
+            <li><a href="#certifications"><i class="fas fa-certificate"></i> Certifications</a></li>
+            <li><a href="#languages"><i class="fas fa-language"></i> Languages</a></li>
+            <li><a href="#resume"><i class="fas fa-file"></i> Resume</a></li>
+            <li><a href="#contact-form"><i class="fas fa-paper-plane"></i> Get in Touch</a></li>
+        </ul>
+    </nav>
+
+    <button class="toggle-btn" onclick="document.body.classList.toggle('dark-mode')">Toggle Dark Mode</button>
+    <button onclick="window.scrollTo({ top: 0, behavior: 'smooth' });" class="back-to-top" id="backToTop"
+        title="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+
+    <script>
+        window.addEventListener('load', function () {
+            // Navbar shrink on scroll
+            const nav = document.querySelector('nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('shrink');
+                } else {
+                    nav.classList.remove('shrink');
+                }
+            });
+
+            // Typing animation
+            new Typed(".typing-animation", {
+                strings: ["Web Developer | ML Enthusiast | Programmer | Student"],
+                typeSpeed: 60,
+                backSpeed: 40,
+                loop: true
+            });
+
+            new Typed(".typing-contact", {
+                strings: ["Get In Touch!"],
+                typeSpeed: 80,
+                backSpeed: 40,
+                loop: true
+            });
+
+            // Back to top button logic
+            const backToTop = document.getElementById('backToTop');
+            window.onscroll = () => {
+                if (document.documentElement.scrollTop > 300) {
+                    backToTop.classList.add('show');
+                } else {
+                    backToTop.classList.remove('show');
+                }
+            };
+        });
+    </script>
+
+    <div class="container">
+        <header data-aos="zoom-in">
+            <img src="assets/photo.jpeg" alt="Your Photo" class="profile-pic" loading="lazy" />
+            <h1 class="bounce">Srija Das</h1>
+            <p class="typing-animation">Web Developer | ML Enthusiast | Programmer | Student</p>
+        </header>
+
+        <section data-aos="fade-up" id="about">
+            <h2>About Me</h2>
+            <p>I am a dedicated B.Tech student, specializing in Computer Science with a solid foundation in programming
+                languages including Java, C, and Python. I am passionate about Machine Learning and Data Science, having
+                undertaken various projects that enhance my skills in real-world applications. I actively wish to expand
+                my knowledge through workshops and online courses.</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <ul>
+                <li>Email: <a href="mailto:dassrija996@gmail.com">dassrija996@gmail.com</a></li>
+                <li>LinkedIn: <a href="https://www.linkedin.com/in/srija-das-12a881270/" target="_blank" rel="noopener">
+                        linkedin.com/in/srija-das-12a881270</a></li>
+                <li>GitHub:
+                    <a href="https://github.com/S2004rija/Srija-s-repository-" target="_blank" rel="noopener">
+                        github.com/S2004rija/Srija-s-repository-</a></li>
+            </ul>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="timeline">
+                <div class="timeline-entry floating-card" data-aos="fade-up">
+                    <strong>University of Engineering and Management, Kolkata</strong><br />
+                    B.Tech in Computer Science and Engineering<br />
+                    GPA: 7.985 | Expected Graduation Year: 2026
+                </div>
+                <div class="timeline-entry floating-card" data-aos="fade-up">
+                    <strong>The Aryans School</strong><br />
+                    Class 12 | Percentage: 83.25 | Stream: Science | Year: 2022
+                </div>
+                <div class="timeline-entry floating-card" data-aos="fade-up">
+                    <strong>The Aryans School</strong><br />
+                    Class 10 | Percentage: 90.4 | Year: 2020
+                </div>
+
+            </div>
+        </section>
+
+        <section id="skills" data-aos="fade-up">
+            <h2>Skills</h2>
+            <ul data-aos="fade-up">
+                <li>Languages: Python, Java, C</li>
+                <li>Web Development: HTML, CSS, React, Flask, Bootstrap, PHP, JavaScript</li>
+                <li>Tools: Git, VS Code, Flask-CORS, Jupyter, JSON</li>
+                <li>Database: SQL, MySQL</li>
+            </ul>
+        </section>
+
+        <section id="projects" data-aos="fade-up">
+            <h2>Projects</h2>
+            <ul data-aos="fade-up">
+                <li><strong>Notes App | Year: 2025 | Individual</strong>
+                    <ul>
+                        <li>Easily used for writting, deleting, editing and finding notes.</li>
+                        <li>Frontend: React.js, Bootstrap 5, Axios, JS</li>
+                        <li>Backend: Flask, Flask-CORS, JSON file storage</li>
+                    </ul>
+                    <a href="#">GitHub Repo</a>
+                </li>
+                <li><strong>Face Mask Detector Model | Year: 2025 | Group</strong><br />ML-based system using YOLO
+                    algorithim to
+                    detect face masks, build in concern with the Covid-19 Pandemic.<br /><a href="#">GitHub Repo</a>
+                </li>
+                <li><strong>Brain Tumor Detector Model | Year: 2024 | Group</strong><br />ML-based system using YOLO
+                    algorithim to scan MRI images
+                    to detect the presence and type of brain tumor.<br /><a href="#">GitHub Repo</a></li>
+                <li><strong>Job Portal Management System | Year: 2023 | Group</strong>
+                    <ul>
+                        <li>An efficient page to find and apply to suitable jobs.</li>
+                        <li>Frontend: HTML, CSS</li>
+                        <li>Backend: PHP</li>
+                        <li>Database: MySQL</li>
+                    </ul>
+                    <a href="#">GitHub Repo</a>
+                </li>
+                <li><strong>Real Time ATM Interface | Year: 2023 | Individual</strong>
+                    <ul>
+                        <li>A secured and user-friendly interface that facilitates real-time ATM transactions.</li>
+                        <li>Frontend: HTML, CSS, JavaScript</li>
+                    </ul>
+                    <a href="https://codepen.io/Srija-Das/pen/jOdwVme" target="_blank">View</a> | <a href="#">GitHub
+                        Repo</a>
+                </li>
+                <li><strong>Portfolio | Year: 2023 | Individual</strong>
+                    <ul>
+                        <li>A sleek, responsive personal portfolio built from scratch to showcase my projects, skills,
+                            and journey — complete with animations, dark mode, and a modern UI.</li>
+                        <li>Frontend: HTML, CSS, JavaScript</li>
+                    </ul>
+                    <a href="#">GitHub Repo</a>
+                </li>
+            </ul>
+        </section>
+
+        <section id="certifications" data-aos="fade-up">
+            <h2>Certifications</h2>
+            <ul data-aos="fade-up">
+                <li><strong>IBM Skill Build:</strong> Artificial Intelligence Fundamentals <a href="assets/ibm.pdf"
+                        download> | Download Certificate</a></li>
+                <li><strong>LinkedIn Learning:</strong>
+                    <ul>
+                        <li>Database Foundations: Intro to Databases<a
+                                href="https://www.linkedin.com/learning/certificates/495d8f86f08f4864b81ae00e4eaef0d8e9c1353a482f3efbf71a58d74dfbb34a?trk=share_certificate"
+                                download> | View Certificate</a></li>
+                        <li>Artificial Intelligence Foundations: Neural Networks<a
+                                href="https://www.linkedin.com/learning/certificates/832467d5769d14f426b9a0171b789398b0785196dfd39fc7a044d46decbfd45d?trk=share_certificate"
+                                download> | View Certificate</a></li>
+                        <li>IT Security Foundations: Operating System Security<a
+                                href="https://www.linkedin.com/learning/certificates/ddfd604bb5aa50063928af81b3d48f5ac5495ec25a84988fac0a380526ad4b34?trk=share_certificate"
+                                download> | View Certificate</a></li>
+                    </ul>
+                </li>
+                <li><strong>Udemy:</strong> Web Developers Bootcamp 2024 by Colt Steele <a href="assets/udemy.jpg"
+                        download> | Download certificate</a></li>
+                <li><strong>Workshops:</strong> One-day Python Workshop (UEMK Coding Club) <a
+                        href="assets/workshop1.pdf" download> | Download certificate</a></li>
+                <li><strong>Internship:</strong> Q/A Intern at Voxxilabs Inc. (21st June 2024 - 21st July 2024)<a
+                        href="assets/voxxi.pdf" download> | Download Certificate</a></li>
+            </ul>
+        </section>
+
+        <section id="languages" data-aos="fade-up">
+            <h2>languages</h2>
+            <ul data-aos="fade-up">
+                <li>English: Fluent</li>
+                <li>Bengali: Native</li>
+                <li>Hindi: Fluent</li>
+                <li>German: Conversational (B2 level) <a href="assets/b2.pdf" download> | Download Certificate</a></li>
+            </ul>
+        </section>
+
+        <section id="resume">
+            <h2>Resume</h2>
+            <a href="assets/resume.pdf" download>Download My Resume (PDF)</a>
+        </section>
+
+        <section id="contact-form">
+            <h2><span class="typing-contact"></span></h2>
+            <form action="https://formspree.io/f/xjkropen" method="POST">
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required
+                    style="width: 100%; padding: 10px; margin: 8px 0;"><br>
+
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" required
+                    style="width: 100%; padding: 10px; margin: 8px 0;"><br>
+
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="5" required
+                    style="width: 100%; padding: 10px; margin: 8px 0;"></textarea><br>
+
+                <button type="submit"
+                    style="background: var(--primary-color); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Send</button>
+            </form>
+        </section>
+    </div>
+    <!-- AOS JS for scroll animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+    <!-- 🌌 Particle.js script -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 60 },
+                color: { value: "#004d40" },
+                shape: { type: "circle" },
+                opacity: { value: 0.3 },
+                size: { value: 4 },
+                line_linked: { enable: true, color: "#004d40", opacity: 0.2 },
+                move: { enable: true, speed: 1 }
+            },
+            interactivity: {
+                events: { onhover: { enable: true, mode: "repulse" } }
+            }
+        });
+
+        // 🔁 Scroll Progress Logic
+        const scrollProgress = document.getElementById('scrollProgress');
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            scrollProgress.style.width = `${(scrollTop / scrollHeight) * 100}%`;
+        });
+    </script>
+
+</body>
+
+</html>
